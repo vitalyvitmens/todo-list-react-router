@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react'
 
 export const useRequestGetTodos = (refreshTodos, setTodosServer, sortTitle) => {
-	const [isLoadingJsonServerComponent, setIsLoadingJsonServerComponent] =
+	const [isLoading, setIsLoading] =
 		useState(false)
 
 	useEffect(() => {
-		setIsLoadingJsonServerComponent(true)
+		setIsLoading(true)
 		sortTitle
 			? fetch('http://localhost:8204/todos?_sort=title')
 					.then((loadedData) => loadedData.json())
 					.then((loadedTodo) => {
 						setTodosServer(loadedTodo)
 					})
-					.finally(() => setIsLoadingJsonServerComponent(false))
+					.finally(() => setIsLoading(false))
 			: fetch('http://localhost:8204/todos')
 					.then((loadedData) => loadedData.json())
 					.then((loadedTodo) => {
 						setTodosServer(loadedTodo)
 					})
-					.finally(() => setIsLoadingJsonServerComponent(false))
+					.finally(() => setIsLoading(false))
 	}, [refreshTodos, sortTitle, setTodosServer])
 
 	return {
-		isLoadingJsonServerComponent,
+		isLoading,
 	}
 }

@@ -19,7 +19,7 @@ export const TodoList = ({
 	return todosServer.map(({ id, title }) => (
 		<ol key={id}>
 			<span>{id}</span>
-			{ellipsis(title, 25)}
+			{ellipsis(String(title), 25)}
 			<button
 				className={!todo ? styles.updateBtnYellow : styles.updateBtnGreen}
 				onClick={() => {

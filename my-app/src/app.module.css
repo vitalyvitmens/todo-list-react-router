@@ -8,7 +8,7 @@
 .container {
 	border: 1px solid black;
 	border-radius: 20px;
-
+  background-color: rgb(248, 237, 206);
 	padding: 25px 50px;
 	margin: 20px;
 	box-shadow: -10px 15px 8px grey;
@@ -63,7 +63,7 @@ ol:before {
 	height: 2em;
 	width: 2em;
 	line-height: 2em;
-	border: 0.3em solid rgb(248, 243, 225);
+	border: 0.3em solid rgb(248, 237, 206);
 	text-align: center;
 	font-weight: bold;
 	border-radius: 2em;
@@ -79,7 +79,7 @@ span {
 	height: 2em;
 	width: 2em;
 	line-height: 2em;
-	border: 0.3em solid rgb(248, 243, 225);
+	border: 0.3em solid rgb(248, 237, 206);
 	text-align: center;
 	font-weight: bold;
 	border-radius: 2em;

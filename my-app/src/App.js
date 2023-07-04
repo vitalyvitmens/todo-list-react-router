@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TodoForm, TodoList, TodoListSearch, Loader } from './components/index'
+import { TodoForm, TodoList, Loader } from './components/index'
 import {
 	useRequestAddTodo,
 	useRequestDeleteTodo,
@@ -103,16 +103,6 @@ export const App = () => {
 				</button>
 				{isLoading ? (
 					<Loader />
-				) : search ? (
-					<TodoListSearch
-						todo={todo}
-						todosServer={todosServer}
-						setTodo={setTodo}
-						requestUpdateTodo={requestUpdateTodo}
-						requestDeleteTodo={requestDeleteTodo}
-						setIsUpdating={setIsUpdating}
-						search={search}
-					/>
 				) : (
 					<TodoList
 						todo={todo}
@@ -121,6 +111,7 @@ export const App = () => {
 						requestUpdateTodo={requestUpdateTodo}
 						requestDeleteTodo={requestDeleteTodo}
 						setIsUpdating={setIsUpdating}
+						search={search}
 					/>
 				)}
 			</div>

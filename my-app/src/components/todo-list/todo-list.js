@@ -7,6 +7,7 @@ export const TodoList = ({
 	todo,
 	setTodo,
 	setIsUpdating,
+	search,
 }) => {
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {
@@ -16,30 +17,61 @@ export const TodoList = ({
 		}
 	}
 
-	return todosServer.map(({ id, title }) => (
-		<ol key={id}>
-			<span>{id}</span>
-			{ellipsis(String(title), 25)}
-			<button
-				className={!todo ? styles.updateBtnYellow : styles.updateBtnGreen}
-				onClick={() => {
-					if (todo === '') {
-						setIsUpdating(true)
-						setTodo(title)
-					} else {
-						requestUpdateTodo(id)
-						setTodo('')
-					}
-				}}
-			>
-				✎
-			</button>
-			<button
-				className={styles.deleteBtn}
-				onClick={() => requestDeleteTodo(id)}
-			>
-				X
-			</button>
-		</ol>
-	))
+	return search
+		? todosServer
+				.filter((todo) => {
+					return search ? todo.title.includes(search) : todo
+				})
+				.map(({ id, title }) => (
+					<ol key={id}>
+						<span>{id}</span>
+            {ellipsis(String(title), 25)}
+						<button
+							className={!todo ? styles.updateBtnYellow : styles.updateBtnGreen}
+							onClick={() => {
+								if (todo === '') {
+									setIsUpdating(true)
+									setTodo(title)
+								} else {
+									requestUpdateTodo(id)
+									setTodo('')
+								}
+							}}
+						>
+							✎
+						</button>
+						<button
+							className={styles.deleteBtn}
+							onClick={() => requestDeleteTodo(id)}
+						>
+							X
+						</button>
+					</ol>
+				))
+		: todosServer.map(({ id, title }) => (
+				<ol key={id}>
+					<span>{id}</span>
+					{ellipsis(String(title), 25)}
+					<button
+						className={!todo ? styles.updateBtnYellow : styles.updateBtnGreen}
+						onClick={() => {
+							if (todo === '') {
+								setIsUpdating(true)
+								setTodo(title)
+							} else {
+								requestUpdateTodo(id)
+								setTodo('')
+							}
+						}}
+					>
+						✎
+					</button>
+					<button
+						className={styles.deleteBtn}
+						onClick={() => requestDeleteTodo(id)}
+					>
+						X
+					</button>
+				</ol>
+		  ))
 }

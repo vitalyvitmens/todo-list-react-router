@@ -10,7 +10,7 @@ import {
 	// useRoutes,
 } from 'react-router-dom'
 import { useState } from 'react'
-import { TodoForm, TodoList, Loader } from './components/index'
+import { TodoForm, TodoList, Loader, TodoInfa } from './components/index'
 import {
 	useRequestAddTodo,
 	useRequestDeleteTodo,
@@ -127,10 +127,12 @@ export const App = () => {
 							requestDeleteTodo={requestDeleteTodo}
 							setIsUpdating={setIsUpdating}
 							search={search}
+							onSubmit={onSubmit}
 						/>
 					)}
 				</div>
 			</div>
+			<TodoInfa />
 			<div className={styles.appNav}>
 				<ul>
 					<li>
@@ -139,9 +141,9 @@ export const App = () => {
 				</ul>
 			</div>
 			<Routes>
-				<Route path="/" element={<MainPage />}/>
-				<Route path="/todo" element={<Todo />}/>
-				<Route path="*" element={<NotFound />}/>
+				<Route path="/" element={<MainPage />} />
+				<Route path="/todo" element={<Todo />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	)

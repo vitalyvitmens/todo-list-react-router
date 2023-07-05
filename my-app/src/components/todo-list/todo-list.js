@@ -8,6 +8,7 @@ export const TodoList = ({
 	setTodo,
 	setIsUpdating,
 	search,
+  onSubmit
 }) => {
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {
@@ -24,7 +25,7 @@ export const TodoList = ({
 	})
 
 	return todosFilter.map(({ id, title }) => (
-		<ol key={id}>
+		<ol key={id} onClick={onSubmit}>
 			<span>{id}</span>
 			{ellipsis(String(title), 22)}
 			<button

@@ -1,5 +1,4 @@
-import { MainPage } from '../../pages/index'
-import { Routes, Route, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './todo-page.module.css'
 
 export const Todo = () => (
@@ -11,8 +10,6 @@ export const Todo = () => (
 				</li>
 			</ul>
 		</div>
-		<Routes>
-			<Route path="/" element={<MainPage />} />
-		</Routes>
+		<h1>Ты на странице Todo</h1>
 	</>
 )

@@ -134,9 +134,6 @@ export const App = () => {
 			<div className={styles.appNav}>
 				<ul>
 					<li>
-						<NavLink to="/">Главная</NavLink>
-					</li>
-					<li>
 						<NavLink to="/todo">Todo</NavLink>
 					</li>
 				</ul>

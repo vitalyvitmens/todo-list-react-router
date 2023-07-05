@@ -17,10 +17,13 @@ import {
 	useRequestGetTodos,
 	useRequestUpdateTodo,
 } from './json-server-hooks/index'
+import { MainPage, Todo, NotFound } from './pages/index'
 import styles from './app.module.css'
 
 //! JSON Server
 // json-server --watch src/db.json --port 8204 --delay 1000
+//! react-router-dom
+// npm i react-router-dom
 
 export const App = () => {
 	const [todo, setTodo] = useState('')
@@ -29,9 +32,6 @@ export const App = () => {
 	const [editId, setEditId] = useState(false)
 	const [sortTitle, setSortTitle] = useState(false)
 	const [search, setSearch] = useState('')
-
-	const MainPage = () => <div>Контент компонента MainPage</div>
-	const Todo = () => <div>Контент компонента Todo</div>
 
 	const { isLoading } = useRequestGetTodos(
 		refreshTodos,
@@ -135,30 +135,16 @@ export const App = () => {
 				<ul>
 					<li>
 						<NavLink to="/">Главная</NavLink>
-						<NavLink to="/todo-form">TodoForm</NavLink>
-						<NavLink to="/todo-list">TodoList</NavLink>
+					</li>
+					<li>
 						<NavLink to="/todo">Todo</NavLink>
 					</li>
 				</ul>
 			</div>
 			<Routes>
-				<Route path="/" element={<MainPage />}></Route>
-				<Route path="/todo-form" element={<TodoForm />}></Route>
-				<Route path="/todo-list" element={<TodoList />}></Route>
-				<Route
-					path="/todo"
-					element={
-						<Todo
-							todo={todo}
-							todosServer={todosServer}
-							setTodo={setTodo}
-							requestUpdateTodo={requestUpdateTodo}
-							requestDeleteTodo={requestDeleteTodo}
-							setIsUpdating={setIsUpdating}
-							search={search}
-						/>
-					}
-				></Route>
+				<Route path="/" element={<MainPage />}/>
+				<Route path="/todo" element={<Todo />}/>
+				<Route path="*" element={<NotFound />}/>
 			</Routes>
 		</>
 	)

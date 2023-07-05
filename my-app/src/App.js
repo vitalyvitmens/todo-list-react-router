@@ -1,3 +1,14 @@
+import {
+	Routes,
+	Route,
+	NavLink,
+	Outlet,
+	useParams,
+	// useMatch,
+	useNavigate,
+	// Navigate,
+	// useRoutes,
+} from 'react-router-dom'
 import { useState } from 'react'
 import { TodoForm, TodoList, Loader } from './components/index'
 import {
@@ -18,6 +29,9 @@ export const App = () => {
 	const [editId, setEditId] = useState(false)
 	const [sortTitle, setSortTitle] = useState(false)
 	const [search, setSearch] = useState('')
+
+	const MainPage = () => <div>Контент компонента MainPage</div>
+	const Todo = () => <div>Контент компонента Todo</div>
 
 	const { isLoading } = useRequestGetTodos(
 		refreshTodos,
@@ -71,50 +85,81 @@ export const App = () => {
 		sortTitle ? setSortTitle(false) : setSortTitle(true)
 
 	return (
-		<div className={styles.app}>
-			<div className={styles.container}>
-				<h2>My To-Do List</h2>
-				<input
-					type="text"
-					value={search}
-					name="search-todo"
-					placeholder="Найти задачу..."
-					onChange={({ target }) => setSearch(target.value)}
-					className="input-field"
-				/>
-				<p></p>
-				<TodoForm
-					onSubmit={onSubmit}
-					todo={todo}
-					editId={editId}
-					setTodo={setTodo}
-					requestAddTodo={requestAddTodo}
-					isUpdating={isUpdating}
-				/>
-				<p></p>
-				<button
-					className={styles.btnBrown}
-					onClick={sortHandler}
-					disabled={todosServer.length === 0}
-				>
-					{sortTitle
-						? 'Отфильтровать задачи по id'
-						: 'Отфильтровать задачи по алфавиту'}
-				</button>
-				{isLoading ? (
-					<Loader />
-				) : (
-					<TodoList
-						todo={todo}
-						todosServer={todosServer}
-						setTodo={setTodo}
-						requestUpdateTodo={requestUpdateTodo}
-						requestDeleteTodo={requestDeleteTodo}
-						setIsUpdating={setIsUpdating}
-						search={search}
+		<>
+			<div className={styles.app}>
+				<div className={styles.container}>
+					<h2>My To-Do List</h2>
+					<input
+						type="text"
+						value={search}
+						name="search-todo"
+						placeholder="Найти задачу..."
+						onChange={({ target }) => setSearch(target.value)}
+						className="input-field"
 					/>
-				)}
+					<p></p>
+					<TodoForm
+						onSubmit={onSubmit}
+						todo={todo}
+						editId={editId}
+						setTodo={setTodo}
+						requestAddTodo={requestAddTodo}
+						isUpdating={isUpdating}
+					/>
+					<p></p>
+					<button
+						className={styles.btnBrown}
+						onClick={sortHandler}
+						disabled={todosServer.length === 0}
+					>
+						{sortTitle
+							? 'Отфильтровать задачи по id'
+							: 'Отфильтровать задачи по алфавиту'}
+					</button>
+					{isLoading ? (
+						<Loader />
+					) : (
+						<TodoList
+							todo={todo}
+							todosServer={todosServer}
+							setTodo={setTodo}
+							requestUpdateTodo={requestUpdateTodo}
+							requestDeleteTodo={requestDeleteTodo}
+							setIsUpdating={setIsUpdating}
+							search={search}
+						/>
+					)}
+				</div>
 			</div>
-		</div>
+			<div className={styles.appNav}>
+				<ul>
+					<li>
+						<NavLink to="/">Главная</NavLink>
+						<NavLink to="/todo-form">TodoForm</NavLink>
+						<NavLink to="/todo-list">TodoList</NavLink>
+						<NavLink to="/todo">Todo</NavLink>
+					</li>
+				</ul>
+			</div>
+			<Routes>
+				<Route path="/" element={<MainPage />}></Route>
+				<Route path="/todo-form" element={<TodoForm />}></Route>
+				<Route path="/todo-list" element={<TodoList />}></Route>
+				<Route
+					path="/todo"
+					element={
+						<Todo
+							todo={todo}
+							todosServer={todosServer}
+							setTodo={setTodo}
+							requestUpdateTodo={requestUpdateTodo}
+							requestDeleteTodo={requestDeleteTodo}
+							setIsUpdating={setIsUpdating}
+							search={search}
+						/>
+					}
+				></Route>
+			</Routes>
+		</>
 	)
 }

@@ -1,3 +1,14 @@
+.appNav {
+  text-align: center;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
+li {
+  display: flex;
+}
+
 .app {
 	text-align: left;
 	display: flex;

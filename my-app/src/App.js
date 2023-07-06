@@ -86,6 +86,7 @@ export const App = () => {
 
 	return (
 		<>
+			<h1>Главная страница</h1>
 			<div className={styles.app}>
 				<div className={styles.container}>
 					<h2>My To-Do List</h2>
@@ -132,7 +133,6 @@ export const App = () => {
 					)}
 				</div>
 			</div>
-			<TodoInfa />
 			<div className={styles.appNav}>
 				<ul>
 					<li>
@@ -142,7 +142,21 @@ export const App = () => {
 			</div>
 			<Routes>
 				<Route path="/" element={<MainPage />} />
-				<Route path="/todo" element={<Todo />} />
+				<Route
+					path="/todo"
+					element={
+						<Todo
+							todo={todo}
+							todosServer={todosServer}
+							setTodo={setTodo}
+							requestUpdateTodo={requestUpdateTodo}
+							requestDeleteTodo={requestDeleteTodo}
+							setIsUpdating={setIsUpdating}
+							search={search}
+							onSubmit={onSubmit}
+						/>
+					}
+				/>
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>

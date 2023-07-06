@@ -1,3 +1,15 @@
+ol {
+	font: 14px 'Trebuchet MS', 'Lucida Sans';
+	position: relative;
+	padding: 0.4em 2em 0.4em 2em;
+	margin: 0.5em 200px;
+	background: #dad2ca;
+	color: #444;
+	text-decoration: none;
+	border-radius: 0.3em;
+	transition: 0.3s ease-out;
+}
+
 .deleteBtn {
 	position: absolute;
 	right: -1em;

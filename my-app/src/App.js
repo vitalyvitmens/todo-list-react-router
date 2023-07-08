@@ -2,10 +2,10 @@ import {
 	Routes,
 	Route,
 	NavLink,
-	Outlet,
-	useParams,
+	// Outlet,
+	// useParams,
 	// useMatch,
-	useNavigate,
+	// useNavigate,
 	// Navigate,
 	// useRoutes,
 } from 'react-router-dom'
@@ -35,6 +35,7 @@ export const App = () => {
 	const [sortTitle, setSortTitle] = useState(false)
 	const [search, setSearch] = useState('')
 	const [completed, setСompleted] = useState(false)
+	const [todoData, setTodoData] = useState([])
 
 	const { isLoading } = useRequestGetTodos(
 		refreshTodos,
@@ -62,14 +63,12 @@ export const App = () => {
 		todo
 	)
 
-	const { requestCheckTodo } = useRequestCheckTodo(refreshTodos)
+	const { requestCheckTodo } = useRequestCheckTodo(setTodoData)
 
 	const { requestUpdateCompletedTodo } = useRequestToggleCompletedTodo(
-    todo,
 		refreshTodos,
 		setRefreshTodos,
-		completed,
-		setСompleted
+		completed
 	)
 
 	const onSubmit = (e) => {
@@ -100,9 +99,10 @@ export const App = () => {
 	const toggleCompletedHandler = () =>
 		completed ? setСompleted(false) : setСompleted(true)
 
+	const checkTodoHandler = () => todoData
+
 	return (
 		<>
-			<h1>Главная страница</h1>
 			<div className={styles.app}>
 				<div className={styles.container}>
 					<h2>My To-Do List</h2>
@@ -138,15 +138,11 @@ export const App = () => {
 					) : (
 						<>
 							<TodoList
-								todo={todo}
 								todosServer={todosServer}
-								setTodo={setTodo}
-								requestUpdateTodo={requestUpdateTodo}
-								requestDeleteTodo={requestDeleteTodo}
-								requestCheckTodo={requestCheckTodo}
-								setIsUpdating={setIsUpdating}
 								search={search}
 								onSubmit={onSubmit}
+								checkTodoHandler={checkTodoHandler}
+								requestCheckTodo={requestCheckTodo}
 							/>
 							<div className={styles.appNav}>
 								<ul>
@@ -159,17 +155,19 @@ export const App = () => {
 							<div>
 								<TodoInfa
 									todo={todo}
-									todosServer={todosServer}
 									setTodo={setTodo}
+									todosServer={todosServer}
 									requestUpdateTodo={requestUpdateTodo}
 									requestDeleteTodo={requestDeleteTodo}
-									requestCheckTodo={requestCheckTodo}
 									setIsUpdating={setIsUpdating}
-									search={search}
 									onSubmit={onSubmit}
-									requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 									toggleCompletedHandler={toggleCompletedHandler}
+									requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 								/>
+							</div>
+							<h1>Страница 404</h1>
+							<div>
+								<NotFound />
 							</div>
 						</>
 					)}
@@ -183,20 +181,31 @@ export const App = () => {
 				</ul>
 			</div>
 			<Routes>
-				<Route path="/" element={<MainPage />} />
+				<Route
+					path="/"
+					element={
+						<TodoList
+							todosServer={todosServer}
+							search={search}
+							onSubmit={onSubmit}
+							checkTodoHandler={checkTodoHandler}
+							requestCheckTodo={requestCheckTodo}
+						/>
+					}
+				/>
 				<Route
 					path="/todo"
 					element={
 						<TodoInfa
 							todo={todo}
-							todosServer={todosServer}
 							setTodo={setTodo}
+							todosServer={todosServer}
 							requestUpdateTodo={requestUpdateTodo}
 							requestDeleteTodo={requestDeleteTodo}
-							requestCheckTodo={requestCheckTodo}
 							setIsUpdating={setIsUpdating}
-							search={search}
 							onSubmit={onSubmit}
+							toggleCompletedHandler={toggleCompletedHandler}
+							requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 						/>
 					}
 				/>

@@ -1,4 +1,12 @@
-export const TodoList = ({ todosServer, search, onSubmit }) => {
+import styles from './todo-list.module.css'
+
+export const TodoList = ({
+	todosServer,
+	search,
+	onSubmit,
+	checkTodoHandler,
+	requestCheckTodo,
+}) => {
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {
 			return str
@@ -13,10 +21,18 @@ export const TodoList = ({ todosServer, search, onSubmit }) => {
 			: todo
 	})
 
-	return todosFilter.map(({ id, title }) => (
+	return todosFilter.map(({ id, title, completed }) => (
 		<ol key={id} onClick={onSubmit}>
 			<span>{id}</span>
-			{ellipsis(String(title), 22)}
+			<div
+				className={completed ? styles.todoLineThrough : styles.todo}
+				onClick={() => {
+					checkTodoHandler()
+					requestCheckTodo(id)
+				}}
+			>
+				{ellipsis(String(title), 22)}
+			</div>
 		</ol>
 	))
 }

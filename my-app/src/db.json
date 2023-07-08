@@ -2,7 +2,7 @@
   "todos": [
     {
       "title": "выиграй в лотерею",
-      "completed": false,
+      "completed": true,
       "id": 1
     },
     {

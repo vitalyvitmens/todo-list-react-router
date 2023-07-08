@@ -1,9 +1,9 @@
-export const useRequestCheckTodo = (setTodosServer) => {
+export const useRequestCheckTodo = (setTodoData) => {
 	const requestCheckTodo = (id) => {
 		fetch(`http://localhost:8204/todos/${id}`)
 			.then((loadedData) => loadedData.json())
 			.then((loadedTodo) => {
-				setTodosServer(loadedTodo)
+				setTodoData(loadedTodo)
 			})
 	}
 

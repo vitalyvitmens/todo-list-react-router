@@ -10,6 +10,8 @@ export const TodoInfa = ({
 	search,
 	onSubmit,
 	requestCheckTodo,
+  toggleCompletedHandler,
+	requestUpdateCompletedTodo,
 }) => {
 	const todosFilter = todosServer.filter((todo) => {
 		return search
@@ -17,12 +19,20 @@ export const TodoInfa = ({
 			: todo
 	})
 
-	return todosFilter.map(({ id, title }) => (
+	return todosFilter.map(({ id, title, completed }) => (
 		<>
 			<div className={styles.containerTodoInfa}>
 				<ol key={id} onClick={onSubmit}>
 					<span>{id}</span>
-					{title}
+          <div
+				className={completed ? styles.todoLineThrough : styles.todo}
+				onClick={() => {
+					toggleCompletedHandler()
+					requestUpdateCompletedTodo(id)
+				}}
+			>
+				{title}
+			</div>
 					<button
 						className={!todo ? styles.updateBtnYellow : styles.updateBtnGreen}
 						onClick={() => {

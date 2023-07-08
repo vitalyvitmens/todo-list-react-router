@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "title": "купи молоко",
+      "title": "выиграй в лотерею",
       "completed": false,
       "id": 1
     },
@@ -17,7 +17,7 @@
     },
     {
       "title": "разведись с женой",
-      "completed": false,
+      "completed": true,
       "id": 4
     },
     {

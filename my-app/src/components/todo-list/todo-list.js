@@ -8,7 +8,8 @@ export const TodoList = ({
 	setTodo,
 	setIsUpdating,
 	search,
-  onSubmit
+	onSubmit,
+  requestCheckTodo,
 }) => {
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {

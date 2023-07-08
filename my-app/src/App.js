@@ -16,6 +16,7 @@ import {
 	useRequestDeleteTodo,
 	useRequestGetTodos,
 	useRequestUpdateTodo,
+  useRequestCheckTodo,
 } from './json-server-hooks/index'
 import { MainPage, Todo, NotFound } from './pages/index'
 import styles from './app.module.css'
@@ -58,6 +59,8 @@ export const App = () => {
 		setRefreshTodos,
 		todo
 	)
+
+  const { requestCheckTodo } = useRequestCheckTodo(refreshTodos);
 
 	const onSubmit = (e) => {
 		e.preventDefault()
@@ -126,6 +129,7 @@ export const App = () => {
 							setTodo={setTodo}
 							requestUpdateTodo={requestUpdateTodo}
 							requestDeleteTodo={requestDeleteTodo}
+              requestCheckTodo={requestCheckTodo}
 							setIsUpdating={setIsUpdating}
 							search={search}
 							onSubmit={onSubmit}

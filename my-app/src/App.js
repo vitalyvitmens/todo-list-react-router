@@ -16,7 +16,7 @@ import {
 	useRequestDeleteTodo,
 	useRequestGetTodos,
 	useRequestUpdateTodo,
-  useRequestCheckTodo,
+	useRequestCheckTodo,
 } from './json-server-hooks/index'
 import { MainPage, Todo, NotFound } from './pages/index'
 import styles from './app.module.css'
@@ -60,7 +60,7 @@ export const App = () => {
 		todo
 	)
 
-  const { requestCheckTodo } = useRequestCheckTodo(refreshTodos);
+	const { requestCheckTodo } = useRequestCheckTodo(refreshTodos)
 
 	const onSubmit = (e) => {
 		e.preventDefault()
@@ -123,17 +123,40 @@ export const App = () => {
 					{isLoading ? (
 						<Loader />
 					) : (
-						<TodoList
-							todo={todo}
-							todosServer={todosServer}
-							setTodo={setTodo}
-							requestUpdateTodo={requestUpdateTodo}
-							requestDeleteTodo={requestDeleteTodo}
-              requestCheckTodo={requestCheckTodo}
-							setIsUpdating={setIsUpdating}
-							search={search}
-							onSubmit={onSubmit}
-						/>
+						<>
+							<TodoList
+								todo={todo}
+								todosServer={todosServer}
+								setTodo={setTodo}
+								requestUpdateTodo={requestUpdateTodo}
+								requestDeleteTodo={requestDeleteTodo}
+								requestCheckTodo={requestCheckTodo}
+								setIsUpdating={setIsUpdating}
+								search={search}
+								onSubmit={onSubmit}
+							/>
+			<div className={styles.appNav}>
+				<ul>
+					<li>
+						<NavLink to="/">НА ГЛАВНУЮ</NavLink>
+					</li>
+				</ul>
+			</div>
+			<h1>Страница Todo</h1>
+			<div>
+				<TodoInfa
+					todo={todo}
+					todosServer={todosServer}
+					setTodo={setTodo}
+					requestUpdateTodo={requestUpdateTodo}
+					requestDeleteTodo={requestDeleteTodo}
+					requestCheckTodo={requestCheckTodo}
+					setIsUpdating={setIsUpdating}
+					search={search}
+					onSubmit={onSubmit}
+				/>
+			</div>
+						</>
 					)}
 				</div>
 			</div>
@@ -149,17 +172,18 @@ export const App = () => {
 				<Route
 					path="/todo"
 					element={
-						<Todo
-							todo={todo}
-							todosServer={todosServer}
-							setTodo={setTodo}
-							requestUpdateTodo={requestUpdateTodo}
-							requestDeleteTodo={requestDeleteTodo}
-							setIsUpdating={setIsUpdating}
-							search={search}
-							onSubmit={onSubmit}
-						/>
-					}
+            <TodoInfa
+            todo={todo}
+            todosServer={todosServer}
+            setTodo={setTodo}
+            requestUpdateTodo={requestUpdateTodo}
+            requestDeleteTodo={requestDeleteTodo}
+            requestCheckTodo={requestCheckTodo}
+            setIsUpdating={setIsUpdating}
+            search={search}
+            onSubmit={onSubmit}
+          />
+      }
 				/>
 				<Route path="*" element={<NotFound />} />
 			</Routes>

@@ -1,3 +1,10 @@
+.containerTodoInfa {
+  margin: auto;
+  width: 300px;
+  /* padding: 0px 100px; */
+
+}
+
 ol {
 	font: 14px 'Trebuchet MS', 'Lucida Sans';
 	position: relative;

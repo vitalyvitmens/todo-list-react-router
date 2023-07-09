@@ -16,6 +16,7 @@ import {
 	Loader,
 	TodoInfa,
 	NotFound,
+	Button,
 } from './components/index'
 import {
 	useRequestAddTodo,
@@ -104,7 +105,9 @@ export const App = () => {
 	const toggleCompletedHandler = () =>
 		completed ? setСompleted(false) : setСompleted(true)
 
-	const checkTodoHandler = () => todoData
+	const checkTodoHandler = () => todoData.id
+
+	console.log(checkTodoHandler())
 
 	return (
 		<>
@@ -141,39 +144,37 @@ export const App = () => {
 					{isLoading ? (
 						<Loader />
 					) : (
-						<>
-							<Routes>
-								<Route
-									path="/"
-									element={
-										<TodoList
-											todosServer={todosServer}
-											search={search}
-											onSubmit={onSubmit}
-											checkTodoHandler={checkTodoHandler}
-											requestCheckTodo={requestCheckTodo}
-										/>
-									}
-								/>
-								<Route
-									path="/todo"
-									element={
-										<TodoInfa
-											todo={todo}
-											setTodo={setTodo}
-											todosServer={todosServer}
-											requestUpdateTodo={requestUpdateTodo}
-											requestDeleteTodo={requestDeleteTodo}
-											setIsUpdating={setIsUpdating}
-											onSubmit={onSubmit}
-											toggleCompletedHandler={toggleCompletedHandler}
-											requestUpdateCompletedTodo={requestUpdateCompletedTodo}
-										/>
-									}
-								/>
-								<Route path="*" element={<NotFound />} />
-							</Routes>
-						</>
+						<Routes>
+							<Route
+								path="/"
+								element={
+									<TodoList
+										todosServer={todosServer}
+										search={search}
+										onSubmit={onSubmit}
+										checkTodoHandler={checkTodoHandler}
+										requestCheckTodo={requestCheckTodo}
+									/>
+								}
+							/>
+							<Route
+								path="/todo"
+								element={
+									<TodoInfa
+										todo={todo}
+										setTodo={setTodo}
+										todosServer={todosServer}
+										requestUpdateTodo={requestUpdateTodo}
+										requestDeleteTodo={requestDeleteTodo}
+										setIsUpdating={setIsUpdating}
+										onSubmit={onSubmit}
+										toggleCompletedHandler={toggleCompletedHandler}
+										requestUpdateCompletedTodo={requestUpdateCompletedTodo}
+									/>
+								}
+							/>
+							<Route path="*" element={<NotFound Button={Button} />} />
+						</Routes>
 					)}
 				</div>
 			</div>

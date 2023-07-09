@@ -1,12 +1,13 @@
 .appNav {
-  text-align: center;
-  display: flex;
-  margin: auto;
-  justify-content: space-around;
+	text-align: center;
+	display: flex;
+	margin: auto;
+	justify-content: space-around;
 }
 
 li {
-  display: flex;
+	display: flex;
+	margin-bottom: 50px;
 }
 
 .app {
@@ -17,10 +18,11 @@ li {
 }
 
 .container {
+	width: 400px;
 	border: 1px solid black;
 	border-radius: 20px;
-  background-color: rgb(248, 237, 206);
-	padding: 25px 50px;
+	background-color: rgb(248, 237, 206);
+	padding: 0 50px;
 	margin: 20px;
 	box-shadow: -10px 15px 8px grey;
 }
@@ -111,7 +113,7 @@ span:hover {
 }
 
 .btnBrown {
-  margin: 15px 0px;
+	margin: 15px 0px;
 	display: inline-block;
 	font-weight: bold;
 	color: rgb(248, 243, 225);

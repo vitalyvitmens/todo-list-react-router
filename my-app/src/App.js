@@ -119,7 +119,7 @@ export const App = () => {
 						requestAddTodo={requestAddTodo}
 						isUpdating={isUpdating}
 					/>
-					<p></p>
+					{/* <p></p>
 					<button
 						className={styles.btnBrown}
 						onClick={sortHandler}
@@ -128,7 +128,7 @@ export const App = () => {
 						{sortTitle
 							? 'Отфильтровать задачи по id'
 							: 'Отфильтровать задачи по алфавиту'}
-					</button>
+					</button> */}
 					{isLoading ? (
 						<Loader />
 					) : (
@@ -142,6 +142,8 @@ export const App = () => {
 										onSubmit={onSubmit}
 										checkTodoHandler={checkTodoHandler}
 										requestCheckTodo={requestCheckTodo}
+                    sortHandler={sortHandler}
+                    sortTitle={sortTitle}
 									/>
 								}
 							/>

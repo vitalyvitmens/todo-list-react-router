@@ -7,6 +7,8 @@ export const TodoList = ({
 	onSubmit,
 	checkTodoHandler,
 	requestCheckTodo,
+  sortHandler,
+  sortTitle,
 }) => {
 	const navigate = useNavigate()
 
@@ -24,19 +26,34 @@ export const TodoList = ({
 			: todo
 	})
 
-	return todosFilter.map(({ id, title, completed }) => (
-		<ol key={id} onClick={onSubmit}>
-			<span>{id}</span>
-			<div
-				className={completed ? styles.todoLineThrough : styles.todo}
-				onClick={() => {
-					navigate(`/todo/${id}`)
-					checkTodoHandler()
-					requestCheckTodo(id)
-				}}
+	return (
+		<>
+			<p></p>
+			<button
+				className={styles.btnBrown}
+				onClick={sortHandler}
+				disabled={todosServer.length === 0}
 			>
-				{ellipsis(String(title), 22)}
-			</div>
-		</ol>
-	))
+				{sortTitle
+					? 'Отфильтровать задачи по id'
+					: 'Отфильтровать задачи по алфавиту'}
+			</button>
+
+			{todosFilter.map(({ id, title, completed }) => (
+				<ol key={id} onClick={onSubmit}>
+					<span>{id}</span>
+					<div
+						className={completed ? styles.todoLineThrough : styles.todo}
+						onClick={() => {
+							navigate(`/todo/${id}`)
+							checkTodoHandler()
+							requestCheckTodo(id)
+						}}
+					>
+						{ellipsis(String(title), 22)}
+					</div>
+				</ol>
+			))}
+		</>
+	)
 }

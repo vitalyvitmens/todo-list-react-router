@@ -20,7 +20,7 @@ export const TodoList = ({
 		}
 	}
 
-	const todosFilter = todosServer.filter((todo) => {
+	const searchTodo = todosServer.filter((todo) => {
 		return search
 			? todo.title.toLowerCase().includes(search.toLowerCase())
 			: todo
@@ -39,7 +39,7 @@ export const TodoList = ({
 					: 'Отфильтровать задачи по алфавиту'}
 			</button>
 
-			{todosFilter.map(({ id, title, completed }) => (
+			{searchTodo.map(({ id, title, completed }) => (
 				<ol key={id} onClick={onSubmit}>
 					<span>{id}</span>
 					<div

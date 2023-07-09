@@ -119,16 +119,6 @@ export const App = () => {
 						requestAddTodo={requestAddTodo}
 						isUpdating={isUpdating}
 					/>
-					{/* <p></p>
-					<button
-						className={styles.btnBrown}
-						onClick={sortHandler}
-						disabled={todosServer.length === 0}
-					>
-						{sortTitle
-							? 'Отфильтровать задачи по id'
-							: 'Отфильтровать задачи по алфавиту'}
-					</button> */}
 					{isLoading ? (
 						<Loader />
 					) : (

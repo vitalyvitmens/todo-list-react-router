@@ -1,5 +1,5 @@
-import { MainPage } from '../../pages/index'
-import { Routes, Route, NavLink } from 'react-router-dom'
+// import { MainPage } from '../../pages/index'
+// import { Routes, Route, NavLink } from 'react-router-dom'
 import styles from './not-found.module.css'
 
 export const NotFound = () => (
@@ -13,7 +13,7 @@ export const NotFound = () => (
               ${styles.text}`}
 						>
 							<div className={styles.four_zero_four_bg}>
-              <div className={styles.appNav}>
+              {/* <div className={styles.appNav}>
                 <ul>
                   <li>
                     <NavLink to="/">НА ГЛАВНУЮ</NavLink>
@@ -23,7 +23,7 @@ export const NotFound = () => (
               <Routes>
                 <Route path="/" element={<MainPage />} />
               </Routes>
-								<h1 className={styles.text}>404</h1>
+								<h1 className={styles.text}>404</h1> */}
 							</div>
 
 							<div className={styles.contant_box_404}>

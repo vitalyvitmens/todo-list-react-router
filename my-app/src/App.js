@@ -10,7 +10,7 @@ import {
 	// useRoutes,
 } from 'react-router-dom'
 import { useState } from 'react'
-import { TodoForm, TodoList, Loader, TodoInfa } from './components/index'
+import { TodoForm, TodoList, Loader, TodoInfa, NotFound } from './components/index'
 import {
 	useRequestAddTodo,
 	useRequestDeleteTodo,
@@ -19,7 +19,6 @@ import {
 	useRequestCheckTodo,
 	useRequestToggleCompletedTodo,
 } from './hooks/index'
-import { MainPage, Todo, NotFound } from './pages/index'
 import styles from './app.module.css'
 
 //! JSON Server

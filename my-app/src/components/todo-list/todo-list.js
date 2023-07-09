@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './todo-list.module.css'
 
 export const TodoList = ({
@@ -7,6 +8,8 @@ export const TodoList = ({
 	checkTodoHandler,
 	requestCheckTodo,
 }) => {
+  const navigate = useNavigate()
+
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {
 			return str
@@ -29,6 +32,7 @@ export const TodoList = ({
 				onClick={() => {
 					checkTodoHandler()
 					requestCheckTodo(id)
+          navigate('/todo/:id')
 				}}
 			>
 				{ellipsis(String(title), 22)}

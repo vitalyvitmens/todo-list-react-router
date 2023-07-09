@@ -105,9 +105,7 @@ export const App = () => {
 	const toggleCompletedHandler = () =>
 		completed ? setСompleted(false) : setСompleted(true)
 
-	const checkTodoHandler = () => todoData.id
-
-	console.log(checkTodoHandler())
+	const checkTodoHandler = () => todoData
 
 	return (
 		<>
@@ -158,7 +156,7 @@ export const App = () => {
 								}
 							/>
 							<Route
-								path="/todo"
+								path="/todo/:id"
 								element={
 									<TodoInfa
 										todo={todo}
@@ -170,6 +168,8 @@ export const App = () => {
 										onSubmit={onSubmit}
 										toggleCompletedHandler={toggleCompletedHandler}
 										requestUpdateCompletedTodo={requestUpdateCompletedTodo}
+										todoData={todoData}
+										checkTodoHandler={checkTodoHandler}
 									/>
 								}
 							/>

@@ -1,3 +1,4 @@
+import { useParams, useNavigate } from 'react-router-dom'
 import styles from './todo-infa.module.css'
 
 export const TodoInfa = ({
@@ -10,8 +11,13 @@ export const TodoInfa = ({
 	onSubmit,
 	toggleCompletedHandler,
 	requestUpdateCompletedTodo,
+	todoData,
 }) => {
-	return todosServer.map(({ id, title, completed }) => (
+	const currentTodo = todosServer.filter(
+		(todo) => todo.id === Number(todoData.id)
+	)
+
+	return currentTodo.map(({ id, title, completed }) => (
 		<ol key={id} onClick={onSubmit}>
 			<span>{id}</span>
 			<div

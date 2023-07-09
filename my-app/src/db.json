@@ -2,7 +2,7 @@
   "todos": [
     {
       "title": "выиграй в лотерею",
-      "completed": true,
+      "completed": false,
       "id": 1
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "title": "купи хлеб",
-      "completed": false,
+      "completed": true,
       "id": 3
     },
     {

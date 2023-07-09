@@ -1,4 +1,3 @@
-import { useParams, useNavigate } from 'react-router-dom'
 import styles from './todo-infa.module.css'
 
 export const TodoInfa = ({

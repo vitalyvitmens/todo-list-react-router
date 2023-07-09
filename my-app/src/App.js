@@ -1,14 +1,4 @@
-import {
-	Routes,
-	Route,
-	NavLink,
-	// Outlet,
-	// useParams,
-	// useMatch,
-	// useNavigate,
-	// Navigate,
-	// useRoutes,
-} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import {
 	TodoForm,
@@ -40,7 +30,7 @@ export const App = () => {
 	const [editId, setEditId] = useState(false)
 	const [sortTitle, setSortTitle] = useState(false)
 	const [search, setSearch] = useState('')
-	const [completed, setСompleted] = useState(false)
+	const [completed, setCompleted] = useState(false)
 	const [todoData, setTodoData] = useState([])
 
 	const { isLoading } = useRequestGetTodos(
@@ -103,7 +93,7 @@ export const App = () => {
 		sortTitle ? setSortTitle(false) : setSortTitle(true)
 
 	const toggleCompletedHandler = () =>
-		completed ? setСompleted(false) : setСompleted(true)
+		completed ? setCompleted(false) : setCompleted(true)
 
 	const checkTodoHandler = () => todoData
 
@@ -152,12 +142,10 @@ export const App = () => {
 										onSubmit={onSubmit}
 										checkTodoHandler={checkTodoHandler}
 										requestCheckTodo={requestCheckTodo}
-										todoData={todoData}
 									/>
 								}
 							/>
 							<Route
-								// path="/todo/:id"
 								path={`/todo/:${todoData.id}`}
 								element={
 									<TodoInfa
@@ -171,7 +159,6 @@ export const App = () => {
 										toggleCompletedHandler={toggleCompletedHandler}
 										requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 										todoData={todoData}
-										checkTodoHandler={checkTodoHandler}
 									/>
 								}
 							/>

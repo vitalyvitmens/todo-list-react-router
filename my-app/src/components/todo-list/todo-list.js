@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './todo-list.module.css'
 
 export const TodoList = ({
@@ -7,7 +7,6 @@ export const TodoList = ({
 	onSubmit,
 	checkTodoHandler,
 	requestCheckTodo,
-	todoData,
 }) => {
 	const navigate = useNavigate()
 

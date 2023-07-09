@@ -159,6 +159,7 @@ export const App = () => {
 										toggleCompletedHandler={toggleCompletedHandler}
 										requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 										todoData={todoData}
+                    Button={Button}
 									/>
 								}
 							/>

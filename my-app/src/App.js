@@ -152,11 +152,13 @@ export const App = () => {
 										onSubmit={onSubmit}
 										checkTodoHandler={checkTodoHandler}
 										requestCheckTodo={requestCheckTodo}
+										todoData={todoData}
 									/>
 								}
 							/>
 							<Route
-								path="/todo/:id"
+								// path="/todo/:id"
+								path={`/todo/:${todoData.id}`}
 								element={
 									<TodoInfa
 										todo={todo}

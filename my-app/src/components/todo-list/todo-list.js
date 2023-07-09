@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './todo-list.module.css'
 
 export const TodoList = ({
@@ -7,8 +7,9 @@ export const TodoList = ({
 	onSubmit,
 	checkTodoHandler,
 	requestCheckTodo,
+	todoData,
 }) => {
-  const navigate = useNavigate()
+	const navigate = useNavigate()
 
 	const ellipsis = (str, n) => {
 		if (str.length <= n) {
@@ -30,9 +31,9 @@ export const TodoList = ({
 			<div
 				className={completed ? styles.todoLineThrough : styles.todo}
 				onClick={() => {
+					navigate(`/todo/${id}`)
 					checkTodoHandler()
 					requestCheckTodo(id)
-          navigate('/todo/:id')
 				}}
 			>
 				{ellipsis(String(title), 22)}

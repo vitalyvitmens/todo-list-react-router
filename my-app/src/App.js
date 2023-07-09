@@ -142,13 +142,13 @@ export const App = () => {
 										onSubmit={onSubmit}
 										checkTodoHandler={checkTodoHandler}
 										requestCheckTodo={requestCheckTodo}
-                    sortHandler={sortHandler}
-                    sortTitle={sortTitle}
+										sortHandler={sortHandler}
+										sortTitle={sortTitle}
 									/>
 								}
 							/>
 							<Route
-								path={`/todo/:${todoData.id}`}
+								path="/todo/:id"
 								element={
 									<TodoInfa
 										todo={todo}
@@ -161,7 +161,7 @@ export const App = () => {
 										toggleCompletedHandler={toggleCompletedHandler}
 										requestUpdateCompletedTodo={requestUpdateCompletedTodo}
 										todoData={todoData}
-                    Button={Button}
+										Button={Button}
 									/>
 								}
 							/>
